@@ -1,21 +1,22 @@
 package com.example.retrofit2_demo
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.retrofit2_demo.databinding.ItemListBinding
 
 class ArticleAdapter(private val articles: List<Article>) :
     RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.title)
+    inner class ViewHolder(binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+        val title: TextView = binding.title
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_list, parent, false)
-        return ViewHolder(view)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemListBinding.inflate(inflater)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
