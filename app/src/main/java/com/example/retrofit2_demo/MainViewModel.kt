@@ -2,13 +2,19 @@ package com.example.retrofit2_demo
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val articleRepository: ArticleRepository
+) : ViewModel() {
+
     var articles = MutableLiveData<List<Article>>(emptyList())
-    private val articleRepository: ArticleRepository = ArticleRepository()
 
     suspend fun getArticles() {
-        val response = articleRepository.getArticlesSuspend()
+        val response = articleRepository.getArticles()
         articles.value = response
     }
+
 }
