@@ -13,8 +13,10 @@ class MainViewModel @Inject constructor(
     var articles = MutableLiveData<List<Article>>(emptyList())
 
     suspend fun getArticles() {
-        val response = articleRepository.getArticles()
-        articles.value = response
+        when (val response = articleRepository.getArticles()) {
+            is NetworkResult.Success -> articles.value = response.data
+            is NetworkResult.Error -> println("${response.code} ${response.message}")
+            is NetworkResult.Exception -> println("${response.e.message}")
+        }
     }
-
 }
