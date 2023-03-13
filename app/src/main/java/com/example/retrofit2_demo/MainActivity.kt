@@ -1,5 +1,6 @@
 package com.example.retrofit2_demo
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,9 +10,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit2_demo.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.launch
 
+@HiltAndroidApp
+class MainApplication : Application()
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ArticleAdapter.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityMainBinding
