@@ -16,13 +16,13 @@ import kotlinx.coroutines.launch
 
 @HiltAndroidApp
 class MainApplication : Application()
-
+//demo
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ArticleAdapter.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ArticleAdapter
-
+//demo4
     // ViewModelの注入
     private val viewModel: MainViewModel by viewModels()
 
