@@ -54,3 +54,5 @@ class MainActivity : AppCompatActivity(), ArticleAdapter.OnItemClickListener {
     }
 
 }
+
+//demo
